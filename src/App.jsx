@@ -1,11 +1,17 @@
 // App.jsx
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 import "./App.css";
 
 function App() {
   const techRefs = useRef([]);
-  const [visibleIndex, setVisibleIndex] = useState(-1);
+  const techSectionRef = useRef(null);
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
+  const [scrollDir, setScrollDir] = useState("down");
+  const [visibleRows, setVisibleRows] = useState([]);
   const projectWrapperRef = useRef(null);
   const projectSectionRef = useRef(null);
   const [projectIndex, setProjectIndex] = useState(0);
@@ -19,20 +25,33 @@ function App() {
   ];
 
   useEffect(() => {
-    const observers = techRefs.current.map((ref, index) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleIndex(index);
-          }
-        },
-        { threshold: 0.5 }
-      );
-      if (ref) observer.observe(ref);
-      return observer;
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      smoothTouch: true,
     });
-    return () => observers.forEach((obs) => obs.disconnect());
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
   }, []);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const updateDirection = () => {
+      const direction = window.scrollY > lastScrollY ? "down" : "up";
+      if (direction !== scrollDir) {
+        setScrollDir(direction);
+      }
+      lastScrollY = window.scrollY > 0 ? window.scrollY : 0;
+    };
+    window.addEventListener("scroll", updateDirection);
+    return () => window.removeEventListener("scroll", updateDirection);
+  }, [scrollDir]);
 
   useEffect(() => {
     const sectionObserver = new IntersectionObserver(
@@ -47,6 +66,29 @@ function App() {
         sectionObserver.unobserve(projectSectionRef.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    const rowObservers = techRefs.current.map((ref, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleRows((prev) => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
+          } else {
+            setVisibleRows((prev) => prev.filter((i) => i !== index));
+          }
+        },
+        { threshold: 0.5 }
+      );
+      if (ref) observer.observe(ref);
+      return observer;
+    });
+    return () => rowObservers.forEach((obs) => obs.disconnect());
   }, []);
 
   useEffect(() => {
@@ -84,10 +126,22 @@ function App() {
     }
   }, [projectIndex]);
 
+  const scrollToRef = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="app">
+      <nav className="navbar">
+        <button onClick={() => scrollToRef(heroRef)}>Home</button>
+        <button onClick={() => scrollToRef(aboutRef)}>About</button>
+        <button onClick={() => scrollToRef(techSectionRef)}>Tech</button>
+        <button onClick={() => scrollToRef(projectSectionRef)}>Projects</button>
+        <button onClick={() => scrollToRef(contactRef)}>Contact</button>
+      </nav>
+
       {/* Hero Section */}
-      <section className="hero full-section">
+      <section className="hero full-section" ref={heroRef}>
         <div className="hero-text">
           <h1>"Turning Vision into Code."</h1>
         </div>
@@ -97,7 +151,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section className="about full-section">
+      <section className="about full-section" ref={aboutRef}>
         <h2>Luciferous Grandeur</h2>
         <p>
           I'm a developer focused on crafting responsive, interactive, and elegant
@@ -106,31 +160,38 @@ function App() {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="tech full-section">
-        {[
-          ["React", "Vue", "Next.js"],
-          ["Laravel", "Django", "Express.js"],
-          ["Tailwind", "Framer Motion", "Bootstrap"],
-          ["MySQL", "PostgreSQL", "Firebase"],
-        ].map((row, i) => (
-          <motion.div
-            className="tech-row"
-            key={i}
-            ref={(el) => (techRefs.current[i] = el)}
-            initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
-            animate={{
-              x: visibleIndex === i ? 0 : i % 2 === 0 ? -100 : 100,
-              opacity: visibleIndex === i ? 1 : 0,
-            }}
-            transition={{ duration: 0.6 }}
-          >
-            {row.map((tech, j) => (
-              <span className="bubble" key={j}>
-                {tech}
-              </span>
-            ))}
-          </motion.div>
-        ))}
+      <section className="tech full-section" ref={techSectionRef}>
+        <div className="tech-fade-mask">
+          {[
+            ["React", "Vue", "Next.js"],
+            ["Laravel", "Django", "Express.js"],
+            ["Tailwind", "Framer Motion", "Bootstrap"],
+            ["MySQL", "PostgreSQL", "Firebase"],
+          ].map((row, i) => (
+            <motion.div
+              className="tech-row"
+              key={i}
+              ref={(el) => (techRefs.current[i] = el)}
+              initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+              animate={visibleRows.includes(i)
+                ? {
+                    x: 0,
+                    opacity: 1,
+                  }
+                : {
+                    x: i % 2 === 0 ? -100 : 100,
+                    opacity: 0,
+                  }}
+              transition={{ duration: 0.6 }}
+            >
+              {row.map((tech, j) => (
+                <span className="bubble" key={j}>
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* Projects Section */}
@@ -154,7 +215,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section className="contact full-section">
+      <section className="contact full-section" ref={contactRef}>
         <h2>Contact Me</h2>
         <p>Email: Luciferous@gmail.com</p>
         <p>GitHub: github.com/Lordxxx00</p>
