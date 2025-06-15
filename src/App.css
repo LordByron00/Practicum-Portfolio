@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -31,12 +31,185 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
 
-.card {
+/* @media screen and (max-width: 768px) {
+  p {
+      color: black;
+  }
+  .hometext {
+    font-size: 18px;
+
+  }
+} */
+
+/* .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+} */
+
+
+/* App.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: auto;
 }
+
+body, html, .app {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+}
+
+.full-section {
+  min-height: 100vh;
+  max-width: 1280px;
+  width: 100vw;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+  text-align: left;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.hero-photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-photo img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff20;
+  box-shadow: 0 0 20px #ffffff20;
+}
+
+/* About Section */
+.about {
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  max-width: 600px;
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+/* Tech Stack */
+.tech {
+  gap: 2rem;
+}
+
+.tech-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.bubble {
+  background: #1e1e1e;
+  border: 1px solid #ffffff20;
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+}
+
+/* Projects */
+.projects {
+  overflow-x: hidden;
+}
+
+.scroll-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.project {
+  flex: none;
+  min-width: 100%;
+  scroll-snap-align: center;
+  padding: 2rem;
+  text-align: center;
+  background: #181818;
+  border-left: 2px solid #ffffff10;
+  border-right: 2px solid #ffffff10;
+}
+
+.project h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* Contact */
+.contact {
+  text-align: center;
+  background: #111;
+  padding-bottom: 4rem;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  opacity: 0.85;
+} 
