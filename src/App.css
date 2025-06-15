@@ -179,17 +179,22 @@ body, html, .app {
 }
 
 .bubble {
-  background: #1e1e1e;
-  border: 1px solid #ffffff20;
+  text-align: center;
+  /* background: #1e1e1e; */
+  /* border: 1px solid #ffffff20; */
   border-radius: 25rem;
   padding: 2rem 3.5rem;
   font-size: 2rem;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  /* box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); */
   transition: transform 0.3s ease;
 }
 
 .bubble:hover {
   transform: scale(1.05);
+}
+
+.bubble img {
+  width: 50px;
 }
 
 
@@ -370,6 +375,10 @@ body, html, .app {
   .bubble {
     font-size: 0.5rem;
     padding: 1rem 2rem;
+  }
+
+  .bubble img {
+    width: 30px;
   }
 
   .projects {

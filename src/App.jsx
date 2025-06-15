@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-import justine from './assets/Bayron.jpg';
+import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, } from "./assets";
+
 
 
 function App() {
@@ -26,6 +27,14 @@ function App() {
     { name: "iPhoneHub", desc: "E-commerce site", image: "/iphonehub.png" },
     { name: "Messenger Mimic", desc: "Realtime Chat App", image: "/messenger.png" },
   ];
+
+  const techStack = [
+            [["HTML", html], ["CSS", css], ["Javascript", js], ["PHP", php]],
+            [["React", reactIcon], ["Flutter", flutter], ["Express", express], ["laravel", laravel]],
+            [["Java", java], ["Python ", python], ["Dart", dart], ["TypeScript", ts]],
+            [["Godot", godot], ["Firebase ", Firebase], ["Supabase", Supabase]],
+            [["PostgreSQL", PostgreSQL], ["MySQL ", MySQL], ["SQLite", SQLite]],
+          ];
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -150,7 +159,7 @@ function App() {
           <h1>"Turning Vision into Code."</h1>
         </div>
         <div className="hero-photo">
-          <img src={justine} alt="Justine Bayron" />
+          <img src={profile} alt="Justine Bayron" />
           {/* <img src="../assets/Bayron.jpg" alt="Justine Bayron" /> */}
         </div>
       </section>
@@ -167,12 +176,7 @@ function App() {
       {/* Tech Stack Section */}
       <section className="tech full-section" ref={techSectionRef}>
         <div className="tech-fade-mask">
-          {[
-            ["React", "Vue", "Next.js"],
-            ["Laravel", "Django", "Express.js"],
-            ["Tailwind", "Framer Motion", "Bootstrap"],
-            ["MySQL", "PostgreSQL", "Firebase"],
-          ].map((row, i) => (
+          {techStack.map((row, i) => (
             <motion.div
               className="tech-row"
               key={i}
@@ -190,9 +194,10 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               {row.map((tech, j) => (
-                <span className="bubble" key={j}>
-                  {tech}
-                </span>
+                <div className="bubble" key={j}>
+                  <img src={tech[1]} alt="React" />
+                  <p>{tech[0]}</p>
+                </div>
               ))}
             </motion.div>
           ))}
