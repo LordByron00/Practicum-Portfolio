@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import justine from './assets/Bayron.jpg';
 
 
 function App() {
@@ -149,7 +150,8 @@ function App() {
           <h1>"Turning Vision into Code."</h1>
         </div>
         <div className="hero-photo">
-          <img src="/your-photo.jpg" alt="Your" />
+          <img src={justine} alt="Justine Bayron" />
+          {/* <img src="../assets/Bayron.jpg" alt="Justine Bayron" /> */}
         </div>
       </section>
 
