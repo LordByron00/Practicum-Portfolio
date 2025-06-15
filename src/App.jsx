@@ -3,6 +3,8 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+
 
 function App() {
   const techRefs = useRef([]);
@@ -225,11 +227,23 @@ function App() {
 
       {/* Contact Section */}
       <section className="contact full-section" ref={contactRef}>
-        <h2>Contact Me</h2>
-        <p>Email: Luciferous@gmail.com</p>
-        <p>GitHub: github.com/Lordxxx00</p>
-        <p>LinkedIn: linkedin.com/in/luciferous</p>
+        <h2 className="contact-title">Get in Touch</h2>
+        <div className="contact-items">
+          <a href="mailto:Luciferous@gmail.com" className="contact-link" target="_blank" rel="noopener noreferrer">
+            <FaEnvelope className="contact-icon" />
+            Luciferous@gmail.com
+          </a>
+          <a href="https://github.com/Lordxxx00" className="contact-link" target="_blank" rel="noopener noreferrer">
+            <FaGithub className="contact-icon" />
+            github.com/Lordxxx00
+          </a>
+          <a href="https://linkedin.com/in/luciferous" className="contact-link" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin className="contact-icon" />
+            linkedin.com/in/luciferous
+          </a>
+        </div>
       </section>
+
     </div>
   );
 }

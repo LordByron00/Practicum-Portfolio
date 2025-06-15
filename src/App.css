@@ -279,20 +279,146 @@ body, html, .app {
   background: #ff5f5f;
 }
 
-/* Contact */
 .contact {
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
   text-align: center;
-  background: #111;
-  padding-bottom: 4rem;
 }
 
-.contact h2 {
+.contact-title {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: #ff5f5f;
 }
 
-.contact p {
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-  opacity: 0.85;
-} 
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #ff5f5f;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+}
+
+
+/* =================== Responsive Styles =================== */
+@media screen and (max-width: 768px) {
+  .full-section {
+    padding: 3rem 1rem;
+  }
+
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .navbar button {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero-photo img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .about h2 {
+    font-size: 2.2rem;
+  }
+
+  .about p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .tech-row {
+    gap: 1rem;
+  }
+
+  .bubble {
+    font-size: 0.5rem;
+    padding: 1rem 2rem;
+  }
+
+  .projects {
+    padding: 2rem 0;
+  }
+
+  .project {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .project-left,
+  .project-desc {
+    width: 100%;
+  }
+
+  .project-image {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .project-desc {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+
+  .contact {
+    padding: 3rem 1.5rem;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-link {
+    font-size: 1rem;
+  }
+
+  .contact-icon {
+    font-size: 1.3rem;
+  }
+}
