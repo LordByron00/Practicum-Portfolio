@@ -196,44 +196,87 @@ body, html, .app {
 
 /* Projects */
 .projects {
-  overflow-x: hidden;
+  position: relative;
+  overflow: hidden;
+  background: #111;
 }
 
 .scroll-wrapper {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.scroll-wrapper::-webkit-scrollbar {
-  display: none;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.8s ease-in-out;
 }
 
 .project {
-  flex: none;
   min-width: 100%;
-  scroll-snap-align: center;
-  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  /* padding: 2rem; */
+  box-sizing: border-box;
+  gap: 2rem;
+  scroll-snap-align: start;
+}
+
+.project-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.projectheader {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-image {
+  width: 100%;
+  max-height: 60%;
+  object-fit: contain;
+  border-radius: 1rem;
+  border: 2px solid #444;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: bold;
   text-align: center;
-  background: #181818;
-  border-left: 2px solid #ffffff10;
-  border-right: 2px solid #ffffff10;
+  margin-top: 1rem;
 }
 
-.project h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.project-desc {
+  font-size: 1.1rem;
+  width: 50%;
+  text-align: left;
 }
 
-.project p {
-  font-size: 1.2rem;
-  opacity: 0.85;
+.scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.scroll-indicator .dot {
+  width: 10px;
+  height: 10px;
+  background: #444;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.scroll-indicator .dot.active {
+  background: #ff5f5f;
 }
 
 /* Contact */

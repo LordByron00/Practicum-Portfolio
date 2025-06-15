@@ -18,10 +18,10 @@ function App() {
   const [inView, setInView] = useState(false);
 
   const projects = [
-    { name: "WatchMate", desc: "Media-based Dating App" },
-    { name: "Heisenburger", desc: "Java POS System" },
-    { name: "iPhoneHub", desc: "E-commerce site" },
-    { name: "Messenger Mimic", desc: "Realtime Chat App" },
+    { name: "WatchMate", desc: "Media-based Dating App", image: "/watchmate.png" },
+    { name: "Heisenburger", desc: "Java POS System", image: "/heisenburger.png" },
+    { name: "iPhoneHub", desc: "E-commerce site", image: "/iphonehub.png" },
+    { name: "Messenger Mimic", desc: "Realtime Chat App", image: "/messenger.png" },
   ];
 
   useEffect(() => {
@@ -99,6 +99,7 @@ function App() {
       if (!inView || isScrolling) return;
 
       e.preventDefault();
+      e.stopPropagation();
 
       if (e.deltaY > 0 && projectIndex < projects.length - 1) {
         setProjectIndex((prev) => prev + 1);
@@ -199,8 +200,16 @@ function App() {
         <div className="scroll-wrapper" ref={projectWrapperRef}>
           {projects.map((project, i) => (
             <div className="project" key={i}>
-              <h3>{project.name}</h3>
-              <p>{project.desc}</p>
+
+              <div className="projectheader">
+                <img src={project.image} alt={project.name} className="project-image" />
+                <h3 className="project-title">{project.name}</h3>
+              </div>
+
+              <div className="project-details">
+                <p className="project-desc">{project.desc}</p>
+              </div>
+              
             </div>
           ))}
         </div>
