@@ -173,7 +173,11 @@ function App() {
       {/* Hero Section */}
       <section className="hero full-section" ref={heroRef}>
         <div className="hero-text">
-          <h1>"Turning Vision into Code."</h1>
+          <p className="turn">“Turning vison into code.”</p>
+          <div>
+          <h1>JUSTINE BAYRON</h1>
+          <p>Aspiring full-stack developer | Driven by code, design, and purpose.</p>
+          </div>
         </div>
         <div className="hero-photo">
           <img src={profile} alt="Justine Bayron" />
@@ -183,7 +187,7 @@ function App() {
 
       {/* About Section */}
       <section className="about full-section" ref={aboutRef}>
-        <h2>Luciferous Grandeur</h2>
+        <h2>ABOUT ME</h2>
         <p>
           I'm a developer focused on crafting responsive, interactive, and elegant
           digital experiences.
@@ -231,7 +235,7 @@ function App() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={projectsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 1, delay: i * 1 }}
               >
                 <div className="projectheader">
                   <img src={project.image} alt={project.name} className="project-image" />

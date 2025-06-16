@@ -1,4 +1,18 @@
 /* App.css */
+@font-face {
+  font-family: 'conthrax';
+  src: url('./assets/fonts//conthrax/Conthrax-SemiBold.otf') format('opentype'); /* or .ttf/.woff */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'blacksword';
+  src: url('./assets//fonts//conthrax/blacksword/Blacksword.otf') format('opentype');
+  font-weight: normal;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 
 * {
   box-sizing: border-box;
@@ -57,7 +71,7 @@ body, html, .app {
   min-height: 100vh;
   max-width: 1280px;
   width: 100vw;
-  padding: 4rem 2rem;
+  padding: 0rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,15 +84,36 @@ body, html, .app {
   justify-content:space-around;
   align-items: center;
   gap: 2rem;
-  padding-top: 60px;
-
+  /* padding-top: 60px; */
 }
 
 .hero-text {
-  flex: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
+  align-items: center;
+  /* justify-content: space-around; */
+  gap: 6rem;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 600;
+}
+
+.hero-text .turn {
+  font-family: blacksword;
+  font-size: 3rem;
+}
+
+.hero-text h1 {
+  font-family: conthrax;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-text p {
+  /* padding: 25px; */
+  font-size:x-large;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .hero-photo {
