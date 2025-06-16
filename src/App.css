@@ -133,23 +133,30 @@ body, html, .app {
 
 /* About Section */
 .about {
+  height: 100vh;
   text-align: center;
 }
 
 .about h2 {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin: 0rem;
 }
 
 .about p {
-  max-width: 600px;
+  max-width: 650px;
   font-size: 1.25rem;
   opacity: 0.8;
+  text-align: justify;
 }
 
 /* Tech Stack */
 .tech {
   gap: 2rem;
+}
+
+.tech h2 {
+  font-size: 3rem;
+  margin-bottom: 0rem;
 }
 
 .tech-row {
@@ -186,9 +193,14 @@ body, html, .app {
   position: relative;
   overflow: hidden;
   min-width: 100vw;
-  padding: 100px;
-  /* height: 100vh; */
+  height: 100vh;
+  padding: 30px 100px;
   /* background: #111; */
+}
+
+.projects h2 {
+  font-size: 3rem;
+  /* margin-bottom: 2rem; */
 }
 
 .scroll-wrapper {
@@ -197,12 +209,13 @@ body, html, .app {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   height: 100%;
-  width: 100%;
+  width: 70%;
   transition: transform 0.8s ease-in-out;
 }
 
 .project {
   min-width: 100%;
+  flex: 0 0 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -211,22 +224,19 @@ body, html, .app {
   justify-content: center;
   box-sizing: border-box;
   scroll-snap-align: start;
-  gap: 2rem;
-  /* padding: 2rem; */
 }
 
 .projectheader {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   flex: 2.5;
 }
 
 .project-image {
   width: 100%;
   /* max-height: 60%; */
-  max-height: 25rem;
+  max-height: 17rem;
   object-fit:cover;
   border-radius: 1rem;
   border: 2px solid #444;
@@ -245,9 +255,9 @@ body, html, .app {
 
 .project-desc {
   font-size: 1.1rem;
-  width:  100%;
+  width:  70%;
   height: 100%;
-  text-align: left;
+  text-align: justify;
 }
 
 .scroll-indicator {
@@ -271,6 +281,7 @@ body, html, .app {
   background: #ff5f5f;
 }
 
+/* Contact */
 .contact {
   /* background-color: #111; */
   color: #fff;

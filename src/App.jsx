@@ -3,8 +3,9 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin,  } from "react-icons/fa";
 import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, watchmate, heisenburger, gardenbay, iPhoneHub, } from "./assets";
+import { a } from "motion/react-client";
 
 
 
@@ -23,10 +24,10 @@ function App() {
   const [projectsVisible, setProjectsVisible] = useState(false);
 
   const projects = [
-    { name: "WatchMate", desc: "WatchMate is a media-based dating app built with Flutter and Firebase. It connects people through shared interests in movies, shows, and other media content — because sometimes, the best matches start with what you watch. ", image: watchmate },
-    { name: "Heisenburger", desc: "My simple Java project as a first year college student. Heisenburger is a desktop Point of Sale (POS) system built using Java, and JavaFX, designed for small food businesses, burger joints, or fast food outlets. Inspired by Breaking Bad, the system combines simplicity with functionality to streamline customer transactions and order management.", image: heisenburger },
-    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub },
-    { name: "Garden Bay Integrated System", desc: "A React Native-based kiosk ordering application for customers to browse the menu and place orders directly from a tablet. A React-based Inventory management system, product management and sales analytics. A Laravel MVC backend to handle business logic, data storage, and API services.", image: gardenbay },
+    { name: "WatchMate", desc: "WatchMate is a media-based dating app built with Flutter and Firebase. It connects people through shared interests in movies, shows, and other media content — because sometimes, the best matches start with what you watch. ", image: watchmate, url: "https://github.com/LordByron00/WatchMate"},
+    { name: "Heisenburger", desc: "My simple Java project as a first year college student. Heisenburger is a desktop Point of Sale (POS) system built using Java, and JavaFX, designed for small food businesses, burger joints, or fast food outlets. Inspired by Breaking Bad, the system combines simplicity with functionality to streamline customer transactions and order management.", image: heisenburger, url: "https://github.com/LordByron00/Heisenburger" },
+    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub, url: "https://github.com/samanthagwynetha/IphoneHubStore" },
+    { name: "Garden Bay Integrated System", desc: "A React Native-based kiosk ordering application for customers to browse the menu and place orders directly from a tablet. A React-based Inventory management system, product management and sales analytics. A Laravel MVC backend to handle business logic, data storage, and API services.", image: gardenbay, url: "https://github.com/LordByron00/Garden-Bay-Intergrated-System" },
   ];
 
   const techStack = [
@@ -147,14 +148,16 @@ function App() {
     return () => wrapper.removeEventListener("wheel", handleWheel);
   }, [projectIndex, inView]);
 
+
   useEffect(() => {
-    if (projectWrapperRef.current) {
-      projectWrapperRef.current.scrollTo({
-        left: projectIndex * window.innerWidth,
-        behavior: "smooth",
-      });
-    }
-  }, [projectIndex]);
+  if (projectWrapperRef.current) {
+    const wrapperWidth = projectWrapperRef.current.offsetWidth;
+    projectWrapperRef.current.scrollTo({
+      left: projectIndex * wrapperWidth,
+      behavior: "smooth",
+    });
+  }
+}, [projectIndex]);
 
   const scrollToRef = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -178,6 +181,8 @@ function App() {
           <h1>JUSTINE BAYRON</h1>
           <p>Aspiring full-stack developer | Driven by code, design, and purpose.</p>
           </div>
+          {/* <p>Turning vision into code — aspiring full-stack developer.</p> */}
+          {/* <h4>“Turning vision into code — aspiring full-stack developer.”</h4> */}
         </div>
         <div className="hero-photo">
           <img src={profile} alt="Justine Bayron" />
@@ -187,15 +192,19 @@ function App() {
 
       {/* About Section */}
       <section className="about full-section" ref={aboutRef}>
-        <h2>ABOUT ME</h2>
+        <h2>———ABOUT ME———</h2>
         <p>
-          I'm a developer focused on crafting responsive, interactive, and elegant
-          digital experiences.
+          I am a third-year Computer Science student at the University of Mindanao with a strong interest in full-stack development. My focus is on building responsive, efficient, and user-centered applications.
+          I work with modern technologies such as React, Flutter, Laravel, and PostgreSQL, and enjoy bridging the gap between design and functionality. I value clarity, structure, and precision in both code and interface. 
+          I thrive in silence, work well independently, and carry a presence that speaks through the quality of what I build. 
+          Currently, I am refining my skills through hands-on projects that explore real-world solutions, while continuously learning to stay aligned with evolving industry standards.
+          Beyond development, I have a deep appreciation for music and a constant drive to learn new things both technical and personal. 
         </p>
       </section>
 
       {/* Tech Stack Section */}
       <section className="tech full-section" ref={techSectionRef}>
+        <h2>TECH STACK</h2>
         <div className="tech-fade-mask">
           {techStack.map((row, i) => (
             <motion.div
@@ -227,23 +236,29 @@ function App() {
 
       {/* Projects Section */}
       <section className="projects full-section" ref={projectSectionRef}>
-          <p style={{color: "white"}}>PROJECTS</p>
+        <h2>PROJECTS</h2>
         <div className="scroll-wrapper" ref={projectWrapperRef}>
           {projects.map((project, i) => (
+          
               <motion.div
                 className="project"
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={projectsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 1, delay: i * 1 }}
+                transition={{ duration: 1.5, delay: i * 0.5 }}
               >
+             
                 <div className="projectheader">
                   <img src={project.image} alt={project.name} className="project-image" />
                   <h3 className="project-title">{project.name}</h3>
+                  <a href={project.url} className="contact-link" target="_blank" rel="noopener noreferrer">
+                  <FaGithub />
+                </a>
                 </div>
 
                 <div className="project-details">
                   <p className="project-desc">{project.desc}</p>
+                
                 </div>
               </motion.div>
           ))}
@@ -264,11 +279,11 @@ function App() {
         <div className="contact-items">
           <a href="mailto:Luciferous@gmail.com" className="contact-link" target="_blank" rel="noopener noreferrer">
             <FaEnvelope className="contact-icon" />
-            Luciferous@gmail.com
+            j.bayron.538021@umindanao.edu.ph
           </a>
-          <a href="https://github.com/Lordxxx00" className="contact-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/LordByron00" className="contact-link" target="_blank" rel="noopener noreferrer">
             <FaGithub className="contact-icon" />
-            github.com/Lordxxx00
+            LordByron00
           </a>
           <a href="https://linkedin.com/in/luciferous" className="contact-link" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="contact-icon" />
