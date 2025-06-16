@@ -24,10 +24,10 @@ function App() {
   const [projectsVisible, setProjectsVisible] = useState(false);
 
   const projects = [
-    { name: "WatchMate", desc: "WatchMate is a media-based dating app built with Flutter and Firebase. It connects people through shared interests in movies, shows, and other media content — because sometimes, the best matches start with what you watch. ", image: watchmate, url: "https://github.com/LordByron00/WatchMate"},
-    { name: "Heisenburger", desc: "My simple Java project as a first year college student. Heisenburger is a desktop Point of Sale (POS) system built using Java, and JavaFX, designed for small food businesses, burger joints, or fast food outlets. Inspired by Breaking Bad, the system combines simplicity with functionality to streamline customer transactions and order management.", image: heisenburger, url: "https://github.com/LordByron00/Heisenburger" },
-    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub, url: "https://github.com/samanthagwynetha/IphoneHubStore" },
-    { name: "Garden Bay Integrated System", desc: "A React Native-based kiosk ordering application for customers to browse the menu and place orders directly from a tablet. A React-based Inventory management system, product management and sales analytics. A Laravel MVC backend to handle business logic, data storage, and API services.", image: gardenbay, url: "https://github.com/LordByron00/Garden-Bay-Intergrated-System" },
+    { name: "WatchMate", desc: "A media-based matchmaking application built with Flutter and Firebase. WatchMate is a cross-platform mobile application that pairs users based on shared media preferences. Built using Flutter and Firebase, it leverages real-time database services for user interactions, authentication, and profile matching. The system integrates a personalized media catalog, swipe-based interaction logic, and secure cloud data handling, offering a smooth and engaging user experience.", image: watchmate, url: "https://github.com/LordByron00/WatchMate"},
+    { name: "Garden Bay Integrated System", desc: "The Garden Bay Integrated System is a comprehensive restaurant management solution designed to enhance customer convenience and operational efficiency. It features a React Native kiosk application for tablet-based self-ordering, a React-powered admin panel for inventory control and sales analytics, and a real-time kitchen display for order tracking. Backed by a Laravel MVC backend and SQLite database, the system enables seamless communication between customer, staff, and kitchen workflows.", image: gardenbay, url: "https://github.com/LordByron00/Garden-Bay-Intergrated-System" },
+    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.By bridging premium and sustainable shopping choices, iPhoneHub promotes accessibility and eco-conscious consumerism.", image: iPhoneHub, url: "https://github.com/samanthagwynetha/IphoneHubStore" },
+    { name: "Heisenburger", desc: "A desktop-based point-of-sale system using Java, MySQL, and JavaFX. Heisenburger is a standalone Java application designed for efficient restaurant order and inventory management. Developed with JavaFX for a modern UI and MySQL for persistent data storage, the system supports features real-time order processin, user authentication and receipt printing. It offers a reliable and fast solution for small to mid-sized food establishments.", image: heisenburger, url: "https://github.com/LordByron00/Heisenburger" },
   ];
 
   const techStack = [
@@ -250,10 +250,10 @@ function App() {
              
                 <div className="projectheader">
                   <img src={project.image} alt={project.name} className="project-image" />
-                  <h3 className="project-title">{project.name}</h3>
-                  <a href={project.url} className="contact-link" target="_blank" rel="noopener noreferrer">
-                  <FaGithub />
-                </a>
+                  <a href={project.url} className="project-link" target="_blank" rel="noopener noreferrer">
+                    <FaGithub className="project-icon"/>
+                    <h3 className="project-title">{project.name}</h3>
+                  </a>
                 </div>
 
                 <div className="project-details">

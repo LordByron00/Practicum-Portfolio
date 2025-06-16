@@ -209,7 +209,7 @@ body, html, .app {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   height: 100%;
-  width: 70%;
+  width: 80%;
   transition: transform 0.8s ease-in-out;
 }
 
@@ -236,10 +236,29 @@ body, html, .app {
 .project-image {
   width: 100%;
   /* max-height: 60%; */
-  max-height: 17rem;
+  max-height: 20rem;
   object-fit:cover;
   border-radius: 1rem;
   border: 2px solid #444;
+}
+
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  color: #ccc;
+  text-decoration: none;
+  margin-top: 25px;
+  transition: color 0.3s ease;
+}
+
+.project-link:hover {
+  color: #515151;
+}
+
+.project-icon {
+  font-size: 2rem;
 }
 
 .project-details {
@@ -250,7 +269,6 @@ body, html, .app {
   font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
-  margin-top: 1rem;
 }
 
 .project-desc {
