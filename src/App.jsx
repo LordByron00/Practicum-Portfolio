@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, } from "./assets";
+import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, watchmate, heisenburger, gardenbay, iPhoneHub, } from "./assets";
 
 
 
@@ -22,10 +22,11 @@ function App() {
   const [inView, setInView] = useState(false);
 
   const projects = [
-    { name: "WatchMate", desc: "Media-based Dating App", image: "/watchmate.png" },
-    { name: "Heisenburger", desc: "Java POS System", image: "/heisenburger.png" },
-    { name: "iPhoneHub", desc: "E-commerce site", image: "/iphonehub.png" },
-    { name: "Messenger Mimic", desc: "Realtime Chat App", image: "/messenger.png" },
+    { name: "WatchMate", desc: "WatchMate is a media-based dating app built with Flutter and Firebase. It connects people through shared interests in movies, shows, and other media content — because sometimes, the best matches start with what you watch. ", image: watchmate },
+    { name: "Heisenburger", desc: "My simple Java project as a first year college student. Heisenburger is a desktop Point of Sale (POS) system built using Java, and JavaFX, designed for small food businesses, burger joints, or fast food outlets. Inspired by Breaking Bad, the system combines simplicity with functionality to streamline customer transactions and order management.", image: heisenburger },
+    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub },
+    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub },
+    { name: "Garden Bay Integrated System", desc: "A React Native-based kiosk ordering application for customers to browse the menu and place orders directly from a tablet. A React-based Inventory management system, product management and sales analytics. A Laravel MVC backend to handle business logic, data storage, and API services.", image: gardenbay },
   ];
 
   const techStack = [
@@ -206,6 +207,7 @@ function App() {
 
       {/* Projects Section */}
       <section className="projects full-section" ref={projectSectionRef}>
+          <p style={{color: "white"}}>PROJECTS</p>
         <div className="scroll-wrapper" ref={projectWrapperRef}>
           {projects.map((project, i) => (
             <div className="project" key={i}>

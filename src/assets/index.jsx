@@ -17,6 +17,16 @@ export {default as Supabase} from './supabase.svg';
 export {default as PostgreSQL} from './postgresql.svg';
 export {default as MySQL} from './mysql-icon.svg';
 export {default as SQLite} from './sqlite-icon.svg';
+export {default as noise} from './noise.51a05f55.png';
+export {default as watchmate} from './watchmate.jpg';
+export {default as heisenburger} from './Heisenburger.jpg';
+export {default as gardenbay} from './GardenBay.png';
+export {default as iPhoneHub} from './IphoneHub.png';
+
+
+
+
+
 
 
 
