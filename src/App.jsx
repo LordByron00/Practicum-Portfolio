@@ -20,11 +20,11 @@ function App() {
   const projectSectionRef = useRef(null);
   const [projectIndex, setProjectIndex] = useState(0);
   const [inView, setInView] = useState(false);
+  const [projectsVisible, setProjectsVisible] = useState(false);
 
   const projects = [
     { name: "WatchMate", desc: "WatchMate is a media-based dating app built with Flutter and Firebase. It connects people through shared interests in movies, shows, and other media content — because sometimes, the best matches start with what you watch. ", image: watchmate },
     { name: "Heisenburger", desc: "My simple Java project as a first year college student. Heisenburger is a desktop Point of Sale (POS) system built using Java, and JavaFX, designed for small food businesses, burger joints, or fast food outlets. Inspired by Breaking Bad, the system combines simplicity with functionality to streamline customer transactions and order management.", image: heisenburger },
-    { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub },
     { name: "iPhoneHub", desc: "iPhoneHub is a full-stack web-based e-commerce platform dedicated to selling both brand-new and second-hand iPhones. It aims to provide a convenient, trustworthy, and user-friendly marketplace that caters to a wide range of customers—from tech enthusiasts chasing the latest Apple models to budget-conscious users exploring affordable, pre-owned options.", image: iPhoneHub },
     { name: "Garden Bay Integrated System", desc: "A React Native-based kiosk ordering application for customers to browse the menu and place orders directly from a tablet. A React-based Inventory management system, product management and sales analytics. A Laravel MVC backend to handle business logic, data storage, and API services.", image: gardenbay },
   ];
@@ -36,6 +36,22 @@ function App() {
             [["Godot", godot], ["Firebase ", Firebase], ["Supabase", Supabase]],
             [["PostgreSQL", PostgreSQL], ["MySQL ", MySQL], ["SQLite", SQLite]],
           ];
+
+  useEffect(() => {
+      const sectionObserver = new IntersectionObserver(
+        ([entry]) => setProjectsVisible(entry.isIntersecting),
+        { threshold: 0.5 }
+      );
+      if (projectSectionRef.current) {
+        sectionObserver.observe(projectSectionRef.current);
+      }
+      return () => {
+        if (projectSectionRef.current) {
+          sectionObserver.unobserve(projectSectionRef.current);
+        }
+      };
+    }, []);
+
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -210,18 +226,22 @@ function App() {
           <p style={{color: "white"}}>PROJECTS</p>
         <div className="scroll-wrapper" ref={projectWrapperRef}>
           {projects.map((project, i) => (
-            <div className="project" key={i}>
+              <motion.div
+                className="project"
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={projectsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+              >
+                <div className="projectheader">
+                  <img src={project.image} alt={project.name} className="project-image" />
+                  <h3 className="project-title">{project.name}</h3>
+                </div>
 
-              <div className="projectheader">
-                <img src={project.image} alt={project.name} className="project-image" />
-                <h3 className="project-title">{project.name}</h3>
-              </div>
-
-              <div className="project-details">
-                <p className="project-desc">{project.desc}</p>
-              </div>
-              
-            </div>
+                <div className="project-details">
+                  <p className="project-desc">{project.desc}</p>
+                </div>
+              </motion.div>
           ))}
         </div>
         <div className="scroll-indicator">

@@ -150,12 +150,15 @@ body, html, .app {
 .projects {
   position: relative;
   overflow: hidden;
+  min-width: 100vw;
+  padding: 100px;
+  /* height: 100vh; */
   /* background: #111; */
 }
 
 .scroll-wrapper {
   display: flex;
-  overflow-x: hidden;
+  overflow: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   height: 100%;
@@ -173,24 +176,16 @@ body, html, .app {
   justify-content: center;
   box-sizing: border-box;
   scroll-snap-align: start;
-  /* gap: 2rem; */
+  gap: 2rem;
   /* padding: 2rem; */
 }
-
-/* .project-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-} */
 
 .projectheader {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 2;
+  flex: 2.5;
 }
 
 .project-image {
@@ -215,7 +210,8 @@ body, html, .app {
 
 .project-desc {
   font-size: 1.1rem;
-  width:  80%;
+  width:  100%;
+  height: 100%;
   text-align: left;
 }
 
