@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
-import { FaEnvelope, FaGithub, FaLinkedin,  } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, watchmate, heisenburger, gardenbay, iPhoneHub, } from "./assets";
 import { a } from "motion/react-client";
 
@@ -163,6 +163,25 @@ function App() {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, x: 100 },
+  show: { opacity: 1, x: 0, transition: { duration: 1.2 } },
+};
+
   return (
     <div className="app">
       <nav className="navbar">
@@ -174,21 +193,28 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="hero full-section" ref={heroRef}>
-        <div className="hero-text">
-          <p className="turn">“Turning vison into code.”</p>
-          <div>
-          <h1>JUSTINE BAYRON</h1>
-          <p>Aspiring full-stack developer | Driven by code, design, and purpose.</p>
-          </div>
-          {/* <p>Turning vision into code — aspiring full-stack developer.</p> */}
-          {/* <h4>“Turning vision into code — aspiring full-stack developer.”</h4> */}
-        </div>
-        <div className="hero-photo">
+      <motion.section
+        className="hero full-section"
+        ref={heroRef}
+        initial="hidden"
+        animate="show"
+        variants={containerVariants}
+      >
+        <motion.div className="hero-text" variants={textVariants}>
+          <motion.p className="turn" variants={textVariants}>
+            “Turning vision into code.”
+          </motion.p>
+          <motion.div variants={textVariants}>
+            <h1>JUSTINE BAYRON</h1>
+            <p>Aspiring full-stack developer | Driven by code, design, and purpose.</p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div className="hero-photo" variants={imageVariants}>
           <img src={profile} alt="Justine Bayron" />
-          {/* <img src="../assets/Bayron.jpg" alt="Justine Bayron" /> */}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
+
 
       {/* About Section */}
       <section className="about full-section" ref={aboutRef}>
@@ -285,9 +311,13 @@ function App() {
             <FaGithub className="contact-icon" />
             LordByron00
           </a>
-          <a href="https://linkedin.com/in/luciferous" className="contact-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/justine-bayron-274821315/" className="contact-link" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="contact-icon" />
-            linkedin.com/in/luciferous
+            Justine Bayron
+          </a>
+          <a href="https://www.instagram.com/0x7qz9vrx2p1yk6violrd/" className="contact-link" target="_blank" rel="noopener noreferrer">
+            <FaInstagram  className="contact-icon" />
+            0x7qz9vrx2p1yk6violrd
           </a>
         </div>
       </section>
