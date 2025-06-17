@@ -256,6 +256,9 @@ body, html, .app {
   flex: 2.5;
 }
 
+.swipe-hint {
+  display: none;
+}
 .project-image {
   width: 100%;
   /* max-height: 60%; */
@@ -411,6 +414,10 @@ body, html, .app {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.hero-photo {
+  margin-bottom: 6rem;
+}
+
 .hero-photo img {
   width: 180px;
   height: 180px;
@@ -467,7 +474,7 @@ body, html, .app {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
     touch-action: pan-x; /* enables swipe gesture */
-     width: 100%;
+    width: 100%;
     padding: 1rem 0;
   }
 
@@ -484,6 +491,7 @@ body, html, .app {
   }
 
   .swipe-hint {
+  display: block;
   font-size: 0.9rem;
   color: #aaa;
   text-align: center;
