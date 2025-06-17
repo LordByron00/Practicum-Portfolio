@@ -206,7 +206,7 @@ body, html, .app {
   /* margin-bottom: 2rem; */
 }
 
-.scroll-wrapper {
+/* .scroll-wrapper {
   display: flex;
   overflow: hidden;
   scroll-behavior: smooth;
@@ -214,7 +214,27 @@ body, html, .app {
   height: 100%;
   width: 80%;
   transition: transform 0.8s ease-in-out;
-}
+} */
+
+.scroll-wrapper {
+    display: flex;
+    overflow-x: auto; /* changed from hidden */
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* for iOS */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    touch-action: pan-x; /* enables swipe gesture */
+    width: 80%;
+    height: 100%;
+    padding: 1rem 0;
+    transition: transform 0.8s ease-in-out;
+  }
+
+  .scroll-wrapper::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
 
 .project {
   min-width: 100%;
@@ -369,26 +389,54 @@ body, html, .app {
   }
 
   .hero-text {
-    font-size: 2rem;
+    gap: 2rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 
-  .hero-photo img {
-    width: 220px;
-    height: 220px;
-  }
+  .hero-text h1 {
+  font-family: conthrax;
+  font-size: 2rem;
+}
+
+.hero-text .turn {
+  font-family: blacksword;
+  font-size: 2.2rem;
+}
+
+.hero-text p {
+  /* padding: 25px; */
+  font-size: small;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.hero-photo img {
+  width: 180px;
+  height: 180px;
+}
+
+.about {
+  height: auto;
+  padding: 3rem 1rem;
+}
 
   .about h2 {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
 
   .about p {
-    font-size: 1.1rem;
-    padding: 0 1rem;
+    font-size: 1rem;
+    text-align: justify;
+    /* padding: 0 1rem; */
   }
 
   .tech-row {
     gap: 1rem;
+  }
+
+  .tech h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
   }
 
   .bubble {
@@ -404,10 +452,34 @@ body, html, .app {
     padding: 2rem 0;
   }
 
+  .projects h2 {
+  font-size: 1.5rem;
+}
+
+
+  .scroll-wrapper {
+    display: flex;
+    overflow-x: auto; /* changed from hidden */
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* for iOS */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    touch-action: pan-x; /* enables swipe gesture */
+     width: 100%;
+    padding: 1rem 0;
+  }
+
+  .scroll-wrapper::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+
   .project {
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem 1rem;
+    flex: 0 0 90%;
+    margin-right: 10px;
   }
 
   .project-left,
@@ -417,17 +489,20 @@ body, html, .app {
 
   .project-image {
     width: 100%;
-    max-height: 300px;
+    max-height: 200px;
   }
 
   .project-title {
-    font-size: 1.5rem;
     margin-top: 1rem;
+    font-size: 1.3rem;
+
   }
 
   .project-desc {
-    font-size: 1rem;
-    text-align: center;
+    width: 100%;
+    font-size: 0.95rem;
+    text-align: justify;
+    padding: 0 1rem;
   }
 
   .scroll-indicator {
