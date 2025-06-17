@@ -263,9 +263,9 @@ const imageVariants = {
       {/* Projects Section */}
       <section className="projects full-section" ref={projectSectionRef}>
         <h2>PROJECTS</h2>
+        <p className="swipe-hint">← swipe to view →</p>
         <div className="scroll-wrapper" ref={projectWrapperRef}>
           {projects.map((project, i) => (
-          
               <motion.div
                 className="project"
                 key={i}
