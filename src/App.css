@@ -368,7 +368,7 @@ body, html, .app {
 /* =================== Responsive Styles =================== */
 @media screen and (max-width: 768px) {
   .full-section {
-    padding: 3rem 1rem;
+    padding: 0rem 2rem;
   }
 
   .navbar {
@@ -386,17 +386,18 @@ body, html, .app {
   .hero {
     flex-direction: column;
     text-align: center;
+    gap: 0rem;
   }
 
   .hero-text {
-    gap: 2rem;
+    gap: 0rem;
     font-size: 1.5rem;
     text-align: center;
   }
 
   .hero-text h1 {
   font-family: conthrax;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .hero-text .turn {
@@ -504,6 +505,10 @@ body, html, .app {
     font-size: 1.3rem;
 
   }
+
+.project-link {
+  font-size: 0.8rem;
+}
 
   .project-desc {
     width: 100%;
