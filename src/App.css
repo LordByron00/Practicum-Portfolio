@@ -325,6 +325,29 @@ body, html, .app {
   background: #ff5f5f;
 }
 
+/* CERTIFICATION */
+.certificate {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+.certificate h2 {
+  margin-top: 25px;
+  font-size: 2.5rem;
+}
+
+.certiport {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 100%;
+}
+
+.certiport img {
+  flex: 1;
+  padding: 2.5rem;
+  width: 250px;
+}
 /* Contact */
 .contact {
   /* background-color: #111; */
@@ -478,8 +501,6 @@ body, html, .app {
     padding: 1rem 0;
     overscroll-behavior: contain; /* or auto at edges */
     touch-action: pan-y; /* vertical scrolling only */
-
-
   }
 
   .scroll-wrapper::-webkit-scrollbar {
@@ -532,6 +553,11 @@ body, html, .app {
   .scroll-indicator {
     display: none;
   }
+
+.certificate h2 {
+  margin-top: 25px;
+  font-size: 1.5rem;
+}
 
   .contact {
     padding: 3rem 1.5rem;

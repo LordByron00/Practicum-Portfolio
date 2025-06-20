@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, watchmate, heisenburger, gardenbay, iPhoneHub, } from "./assets";
+import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, watchmate, heisenburger, gardenbay, iPhoneHub, HTMLCSS, database, } from "./assets";
 // import { motion } from "motion/react"
 
 
@@ -13,6 +13,7 @@ function App() {
   const techRefs = useRef([]);
   const techSectionRef = useRef(null);
   const heroRef = useRef(null);
+  const certiRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
   const [scrollDir, setScrollDir] = useState("down");
@@ -264,10 +265,11 @@ const imageVariants = {
   return (
     <div className="app">
       <nav className="navbar">
-        <button onClick={() => scrollToRef(heroRef)}>Home</button>
+        {/* <button onClick={() => scrollToRef(heroRef)}>Home</button> */}
         <button onClick={() => scrollToRef(aboutRef)}>About</button>
         <button onClick={() => scrollToRef(techSectionRef)}>Tech</button>
         <button onClick={() => scrollToRef(projectSectionRef)}>Projects</button>
+        <button onClick={() => scrollToRef(certiRef)}>Certification</button>
         <button onClick={() => scrollToRef(contactRef)}>Contact</button>
       </nav>
 
@@ -375,6 +377,14 @@ const imageVariants = {
               className={`dot ${projectIndex === i ? "active" : ""}`}
             ></span>
           ))}
+        </div>
+      </section>
+
+      <section className="certificate" ref={certiRef}>
+          <h2>CERTIFICATION</h2>
+        <div className="certiport">
+          <img src={HTMLCSS} alt="HTMLCSS" />
+          <img src={database} alt="database"/>
         </div>
       </section>
 

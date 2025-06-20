@@ -22,6 +22,9 @@ export {default as watchmate} from './watchmate.jpg';
 export {default as heisenburger} from './Heisenburger.jpg';
 export {default as gardenbay} from './GardenBay.png';
 export {default as iPhoneHub} from './IphoneHub.png';
+export {default as database} from './HTMLCSS.jpg';
+export {default as HTMLCSS} from './database.jpg';
+
 
 
 
