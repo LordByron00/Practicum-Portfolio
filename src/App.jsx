@@ -5,7 +5,7 @@ import Lenis from "@studio-freight/lenis";
 import "./App.css";
 import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { reactIcon, profile, html, css, js, Firebase, Supabase, PostgreSQL, MySQL, SQLite, php, flutter, java, python, dart, ts, godot, express, laravel, watchmate, heisenburger, gardenbay, iPhoneHub, } from "./assets";
-import { a } from "motion/react-client";
+// import { motion } from "motion/react"
 
 
 
@@ -121,32 +121,111 @@ function App() {
     return () => rowObservers.forEach((obs) => obs.disconnect());
   }, []);
 
-  useEffect(() => {
-    const wrapper = projectWrapperRef.current;
-    let isScrolling = false;
+ useEffect(() => {
+  const wrapper = projectWrapperRef.current;
+  let isScrolling = false;
+  let touchStartY = 0;
 
-    const handleWheel = (e) => {
-      if (!inView || isScrolling) return;
+  const handleWheel = (e) => {
+    if (!inView || isScrolling) return;
 
-      e.preventDefault();
-      e.stopPropagation();
+    const scrollingDown = e.deltaY > 0;
+    const scrollingUp = e.deltaY < 0;
 
-      if (e.deltaY > 0 && projectIndex < projects.length - 1) {
-        setProjectIndex((prev) => prev + 1);
-        isScrolling = true;
-      } else if (e.deltaY < 0 && projectIndex > 0) {
-        setProjectIndex((prev) => prev - 1);
-        isScrolling = true;
-      }
+    const atLastProject = projectIndex === projects.length - 1;
+    const atFirstProject = projectIndex === 0;
 
-      setTimeout(() => {
-        isScrolling = false;
-      }, 800);
-    };
+    if ((scrollingDown && atLastProject) || (scrollingUp && atFirstProject)) {
+      return;
+    }
 
-    if (wrapper) wrapper.addEventListener("wheel", handleWheel, { passive: false });
-    return () => wrapper.removeEventListener("wheel", handleWheel);
-  }, [projectIndex, inView]);
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (scrollingDown && !atLastProject) {
+      setProjectIndex((prev) => prev + 1);
+      isScrolling = true;
+    } else if (scrollingUp && !atFirstProject) {
+      setProjectIndex((prev) => prev - 1);
+      isScrolling = true;
+    }
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 800);
+  };
+
+  // Touch handlers for mobile
+  const handleTouchStart = (e) => {
+    touchStartY = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+  if (!inView || isScrolling) return;
+
+  const touchEndY = e.changedTouches[0].clientY;
+  const deltaY = touchStartY - touchEndY;
+
+  const scrollingDown = deltaY > 30;
+  const scrollingUp = deltaY < -30;
+
+  const atLastProject = projectIndex === projects.length - 1;
+  const atFirstProject = projectIndex === 0;
+
+  if ((scrollingDown && atLastProject) || (scrollingUp && atFirstProject)) {
+    Lenis.start(); // let Lenis allow normal scroll
+    return;        // don’t block it
+  }
+
+  // Block native scroll only if custom scrolling
+  Lenis.stop(); // prevent Lenis default scroll if custom logic is applied
+
+  if (scrollingDown && !atLastProject) {
+    setProjectIndex((prev) => prev + 1);
+    isScrolling = true;
+  } else if (scrollingUp && !atFirstProject) {
+    setProjectIndex((prev) => prev - 1);
+    isScrolling = true;
+  }
+
+  setTimeout(() => {
+    isScrolling = false;
+    Lenis.start(); // resume Lenis scroll after timeout
+  }, 800);
+};
+
+  if (wrapper) {
+    wrapper.addEventListener("wheel", handleWheel, { passive: false });
+    wrapper.addEventListener("touchstart", handleTouchStart, { passive: true });
+    wrapper.addEventListener("touchend", handleTouchEnd, { passive: true });
+  }
+
+  return () => {
+    if (wrapper) {
+      wrapper.removeEventListener("wheel", handleWheel);
+      wrapper.removeEventListener("touchstart", handleTouchStart);
+      wrapper.removeEventListener("touchend", handleTouchEnd);
+    }
+  };
+}, [projectIndex, inView, projects.length]);
+
+useEffect(() => {
+  const wrapper = projectWrapperRef.current;
+  if (!wrapper) return;
+
+  const atFirst = projectIndex === 0;
+  const atLast = projectIndex === projects.length - 1;
+
+  if (atFirst || atLast) {
+    wrapper.style.overscrollBehavior = 'auto'; // allow native bounce scroll
+    wrapper.style.touchAction = 'auto';         // allow browser gestures
+  } else {
+    wrapper.style.overscrollBehavior = 'none'; // trap scroll during in-between projects
+    wrapper.style.touchAction = 'none';        // block gestures like pull-to-refresh
+  }
+}, [projectIndex, projects.length]);
+
+
 
 
   useEffect(() => {

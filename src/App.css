@@ -415,7 +415,7 @@ body, html, .app {
 }
 
 .hero-photo {
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
 }
 
 .hero-photo img {
@@ -476,6 +476,10 @@ body, html, .app {
     touch-action: pan-x; /* enables swipe gesture */
     width: 100%;
     padding: 1rem 0;
+    overscroll-behavior: contain; /* or auto at edges */
+    touch-action: pan-y; /* vertical scrolling only */
+
+
   }
 
   .scroll-wrapper::-webkit-scrollbar {
