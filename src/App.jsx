@@ -392,7 +392,7 @@ const imageVariants = {
       <section className="contact full-section" ref={contactRef}>
         <h2 className="contact-title">Get in Touch</h2>
         <div className="contact-items">
-          <a href="mailto:Luciferous@gmail.com" className="contact-link" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:j.bayron.538021@umindanao.edu.ph" className="contact-link" target="_blank" rel="noopener noreferrer">
             <FaEnvelope className="contact-icon" />
             j.bayron.538021@umindanao.edu.ph
           </a>
