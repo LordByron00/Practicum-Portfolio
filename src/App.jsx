@@ -404,7 +404,7 @@ const imageVariants = {
             <FaLinkedin className="contact-icon" />
             Justine Bayron
           </a>
-          <a href="https://www.instagram.com/0x7qz9vrx2p1yk6violrd/" className="contact-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/01x369" className="contact-link" target="_blank" rel="noopener noreferrer">
             <FaInstagram  className="contact-icon" />
             0x7qz9vrx2p1yk6violrd
           </a>
