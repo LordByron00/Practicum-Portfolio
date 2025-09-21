@@ -301,7 +301,7 @@ const imageVariants = {
       <section className="about full-section" ref={aboutRef}>
         <h2>———ABOUT ME———</h2>
         <p>
-          I am a third-year Computer Science student at the University of Mindanao with a strong interest in full-stack development. My focus is on building responsive, efficient, and user-centered applications.
+          I am a 4th Computer Science student at the University of Mindanao with a strong interest in full-stack development. My focus is on building responsive, efficient, and user-centered applications.
           I work with modern technologies such as React, Flutter, Laravel, and PostgreSQL, and enjoy bridging the gap between design and functionality. I value clarity, structure, and precision in both code and interface. 
           I thrive in silence, work well independently, and carry a presence that speaks through the quality of what I build. 
           Currently, I am refining my skills through hands-on projects that explore real-world solutions, while continuously learning to stay aligned with evolving industry standards.
